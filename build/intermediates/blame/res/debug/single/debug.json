@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_app_icon.png.flat",
+        "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\drawable-mdpi\\app_icon.png"
+    },
+    {
+        "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_app_banner.png.flat",
+        "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\drawable-xhdpi\\app_banner.png"
+    },
+    {
+        "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\layout_fragment_layout.xml.flat",
+        "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\layout\\fragment_layout.xml"
+    }
+]

@@ -1,0 +1,143 @@
+-- Merging decision tree log ---
+manifest
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+	package
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:70-98
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:99-145
+	android:versionCode
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:1-22:12
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:11-69
+	android:installLocation
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:2:146-186
+supports-screens
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:3-163
+	android:largeScreens
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:78-105
+	android:smallScreens
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:21-48
+	android:normalScreens
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:49-77
+	android:xlargeScreens
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:106-134
+	android:anyDensity
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:3:135-160
+application
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:3-16:17
+	android:label
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:92-124
+	android:icon
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:58-91
+	android:banner
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:147-184
+	android:theme
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:16-57
+	android:isGame
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:4:125-146
+activity#com.mklenkgmail.unitytest.UnityPlayerActivity
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:5-12:16
+	android:screenOrientation
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:48-86
+	android:label
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:15-47
+	android:launchMode
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:87-118
+	android:hardwareAccelerated
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:301-336
+	android:configChanges
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:119-300
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:5:337-397
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:6:7-10:23
+action#android.intent.action.MAIN
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:7:9-61
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:7:17-58
+category#android.intent.category.LAUNCHER
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:8:9-69
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:8:19-66
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:9:9-78
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:9:19-75
+meta-data#unityplayer.UnityActivity
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:11:7-82
+	android:value
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:11:59-79
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:11:18-58
+meta-data#unity.build-id
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:13:5-101
+	android:value
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:13:46-98
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:13:16-45
+meta-data#unity.splash-mode
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:14:5-69
+	android:value
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:14:49-66
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:14:16-48
+meta-data#unity.splash-enable
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:15:5-74
+	android:value
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:15:51-71
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:15:16-50
+uses-feature#0x00020000
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:17:3-52
+	android:glEsVersion
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:17:17-49
+uses-permission#android.permission.INTERNET
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:18:3-65
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:18:20-62
+uses-feature#android.hardware.touchscreen
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:19:3-88
+	android:required
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:19:61-85
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:19:17-60
+uses-feature#android.hardware.touchscreen.multitouch
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:20:3-99
+	android:required
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:20:72-96
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:20:17-71
+uses-feature#android.hardware.touchscreen.multitouch.distinct
+ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:21:3-108
+	android:required
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:21:81-105
+	android:name
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml:21:17-80
+uses-sdk
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		ADDED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
+		INJECTED from G:\UnityStoff\Newest Folder\Unity Test\src\main\AndroidManifest.xml
