@@ -31,14 +31,9 @@ public class AndroidButtonFragment extends Fragment {
         buttonUnity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: when switching between Unity and Android view too quickly the UnityPlayer
-                // takes too long to resolve the pause() and resume() methods, making it possible to
-                // get stuck in paused Unity screen;
                 UnityPlayerActivity activity = (UnityPlayerActivity) getActivity();
                 activity.switchFragmentToUnity();
 
-
-                //container.setVisibility(View.VISIBLE);
 
             }
         });

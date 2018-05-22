@@ -2,6 +2,7 @@ package com.mklenkgmail.unitytest;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,8 +23,8 @@ import com.unity3d.player.UnityPlayer;
 public class UnityPlayerActivity extends Activity {
 
     private UnityPlayer mUnityPlayer;
-    private FrameLayout container;
-    private Activity thisActivity;
+    // not needed in FragmentManager implementation
+    // private Activity thisActivity;
     private UnityFragment unityFragment;
     private AndroidButtonFragment androidButtonFragment;
 
@@ -31,24 +32,24 @@ public class UnityPlayerActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        container = (FrameLayout) findViewById(R.id.container);
+        FrameLayout container = (FrameLayout) findViewById(R.id.container);
 
-        //to grant access to UI thread in static sub-context
-        thisActivity = this;
+        //to grant access to UI thread in static sub-context (not needed in this Implementation)
+        //thisActivity = this;
 
-        //Initialize UnityPlayer
+        //Instantiate and initialize UnityPlayer
         mUnityPlayer = new UnityPlayer(this);
         int glesMode = mUnityPlayer.getSettings().getInt("gles_mode", 1);
         mUnityPlayer.init(glesMode, false);
 
-        //On cold boot only
-        if (savedInstanceState == null) {
+        //On cold boot only Initialize fragments and add to UnityPlayerActivity's own FragmentManager
+        if (savedInstanceState == null || getFragmentManager().findFragmentByTag("unity") == null || (getFragmentManager().findFragmentByTag("android") == null)) {
             unityFragment = UnityFragment.newInstance(mUnityPlayer);
             androidButtonFragment = AndroidButtonFragment.newInstance(mUnityPlayer);
             //mUnityPlayer.pause();
             getFragmentManager().beginTransaction()
-                    .add(container.getId(), unityFragment)
-                    .add(container.getId(), androidButtonFragment)
+                    .add(container.getId(), unityFragment, "unity")
+                    .add(container.getId(), androidButtonFragment, "android")
                     .commit();
         }
 
@@ -68,17 +69,26 @@ public class UnityPlayerActivity extends Activity {
         });*/
     }
 
-    //TODO: Back button overridden to prevent getting stuck in Unity player
+    //Back button overridden to demonstrate transition
     @Override
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
         //mUnityPlayer.pause();
-
-        getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        // Warning: Breaks stuff, use at your own peril!
+        //fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        if(getFragmentManager().findFragmentByTag("android").isHidden())
+        {
+            fragmentTransaction.hide(unityFragment).show(androidButtonFragment).commit();
+        } else if (getFragmentManager().findFragmentByTag("unity").isHidden())
+        {
+            fragmentTransaction.hide(androidButtonFragment).show(unityFragment).commit();
+        }
         //container.setVisibility(View.GONE);
     }
 
     public void switchFragmentToUnity(){
+        //for good measure, not necessary
         mUnityPlayer.resume();
         getFragmentManager().beginTransaction().hide(androidButtonFragment).show(unityFragment).commit();
     }
