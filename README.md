@@ -26,7 +26,71 @@ Now for a detailed play-by-play of what is going on when the application is run.
 ### UnityPlayerActivity
 UnityPlayerActivity is a straightforward android.app.Activity. This class manages the Fragments by instantiating, running and switching them when so instructed. It also is the class that is being called by the C# script (see file in Repository for details) and the class that UnityPlayer resides in (see TODO above, this could be extracted to its own class for better organization).
 
-The procedure goes. 1. nable main content layout 
+Member fields:
+´´´
+    // the Object that is the interface between Unity and Android
+    private UnityPlayer mUnityPlayer;
+    // not needed in FragmentManager (Ultimate) implementation
+    // private Activity thisActivity;
+    //the two fragments
+    private UnityFragment unityFragment;
+    private AndroidButtonFragment androidButtonFragment;
+´´´
+
+
+The procedure goes: 
+  1. Enable main content layout and find container where to put Fragment(s) (depending on branch)
+  ```
+  setContentView(R.layout.activity_main);
+  FrameLayout container = (FrameLayout) findViewById(R.id.container);
+  ```
+  2. Instantiate and initialize UnityPlayer
+  ```
+  mUnityPlayer = new UnityPlayer(this);
+  int glesMode = mUnityPlayer.getSettings().getInt("gles_mode", 1);
+  mUnityPlayer.init(glesMode, false);
+  ```
+  3. Initialize fragments and add to UnityPlayerActivity's own FragmentManager when the UnityPlayerActivity is newly created
+  ```
+  if (savedInstanceState == null) {
+            unityFragment = UnityFragment.newInstance(mUnityPlayer);
+            androidButtonFragment = AndroidButtonFragment.newInstance(mUnityPlayer);
+            //mUnityPlayer.pause();
+            getFragmentManager().beginTransaction()
+                    .add(container.getId(), unityFragment)
+                    .add(container.getId(), androidButtonFragment)
+                    .commit();
+        }
+  ```
+  4. Offer methods that can be called by Fragments and Unity itself to switch between (by hiding the other) fragments. 
+  ```
+  public void switchFragmentToUnity(){
+    mUnityPlayer.resume();
+    getFragmentManager().beginTransaction().hide(androidButtonFragment).show(unityFragment).commit();
+  }
+  ```
+  ```
+   public void callMeNonStatic(String s){
+        Log.d("Non-Static", "Non-Static Call from Unity at " + s);
+    /*  Easy way
+        thisActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                container.setVisibility(View.GONE);
+            }
+        });*/
+
+    //  Harder way (possibly more powerful)
+        getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
+        //mUnityPlayer.pause();
+    }
+    // and static;
+    public static void callMeStatic(String s){
+        Log.d("Static", "Static Call from Unity at " +  s);
+
+
+    }
+  ```
 
 Explain what these tests test and why
 
