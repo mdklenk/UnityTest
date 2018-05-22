@@ -37,7 +37,7 @@ public class UnityFragment extends Fragment {
         FrameLayout layout = (FrameLayout) view.findViewById( R.id.frameLayout );
         layout.addView(mUnityPlayer, 0, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
 
-        mUnityPlayer.resume();
+        //mUnityPlayer.resume();
 
         return view;
     }
