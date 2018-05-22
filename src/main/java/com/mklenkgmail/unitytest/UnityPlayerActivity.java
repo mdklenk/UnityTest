@@ -67,7 +67,7 @@ public class UnityPlayerActivity extends Activity {
     @Override
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
-        mUnityPlayer.pause();
+        //mUnityPlayer.pause();
         container.setVisibility(View.GONE);
     }
 
@@ -88,7 +88,7 @@ public class UnityPlayerActivity extends Activity {
                 container.setVisibility(View.GONE);
             }
         });
-        mUnityPlayer.pause();
+        //mUnityPlayer.pause();
     }
     // and static;
     public static void callMeStatic(String s){
