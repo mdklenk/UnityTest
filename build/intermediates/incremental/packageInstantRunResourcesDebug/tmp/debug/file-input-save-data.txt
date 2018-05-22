@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon May 21 19:03:20 CEST 2018
+#Tue May 22 16:46:51 CEST 2018
 60.set=ASSET
 52.set=ASSET
 53.base=G\:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\assets\\debug

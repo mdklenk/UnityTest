@@ -45,14 +45,14 @@ public class UnityPlayerActivity extends Activity {
         if (savedInstanceState == null) {
             unityFragment = UnityFragment.newInstance(mUnityPlayer);
             androidButtonFragment = AndroidButtonFragment.newInstance(mUnityPlayer);
-            mUnityPlayer.pause();
+            //mUnityPlayer.pause();
             getFragmentManager().beginTransaction()
                     .add(container.getId(), unityFragment)
                     .add(container.getId(), androidButtonFragment)
                     .commit();
         }
 
-/*
+/*  DEPRECATED: Old implementation with View being disabled;
         Button buttonUnity = (Button) findViewById(R.id.buttonUnity);
         buttonUnity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +72,7 @@ public class UnityPlayerActivity extends Activity {
     @Override
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
-        mUnityPlayer.pause();
+        //mUnityPlayer.pause();
 
         getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
         //container.setVisibility(View.GONE);
@@ -103,7 +103,7 @@ public class UnityPlayerActivity extends Activity {
 
     //  Harder way (possibly more powerful)
         getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
-        mUnityPlayer.pause();
+        //mUnityPlayer.pause();
     }
     // and static;
     public static void callMeStatic(String s){
