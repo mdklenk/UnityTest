@@ -8,6 +8,10 @@
         "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\layout_btnfragment_layout.xml.flat",
+        "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\layout\\btnfragment_layout.xml"
+    },
+    {
         "merged": "G:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_app_banner.png.flat",
         "source": "G:\\UnityStoff\\Newest Folder\\Unity Test\\src\\main\\res\\drawable-xhdpi\\app_banner.png"
     },

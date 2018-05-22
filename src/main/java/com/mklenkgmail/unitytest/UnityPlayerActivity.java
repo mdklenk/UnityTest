@@ -25,6 +25,7 @@ public class UnityPlayerActivity extends Activity {
     private FrameLayout container;
     private Activity thisActivity;
     private UnityFragment unityFragment;
+    private AndroidButtonFragment androidButtonFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +44,15 @@ public class UnityPlayerActivity extends Activity {
         //On cold boot only
         if (savedInstanceState == null) {
             unityFragment = UnityFragment.newInstance(mUnityPlayer);
+            androidButtonFragment = AndroidButtonFragment.newInstance(mUnityPlayer);
+            mUnityPlayer.pause();
             getFragmentManager().beginTransaction()
                     .add(container.getId(), unityFragment)
+                    .add(container.getId(), androidButtonFragment)
                     .commit();
         }
 
-
+/*
         Button buttonUnity = (Button) findViewById(R.id.buttonUnity);
         buttonUnity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +61,11 @@ public class UnityPlayerActivity extends Activity {
                 // takes too long to resolve the pause() and resume() methods, making it possible to
                 // get stuck in paused Unity screen;
                 mUnityPlayer.resume();
-                container.setVisibility(View.VISIBLE);
+                getFragmentManager().beginTransaction().show(unityFragment).commit();
+                //container.setVisibility(View.VISIBLE);
 
             }
-        });
+        });*/
     }
 
     //TODO: Back button overridden to prevent getting stuck in Unity player
@@ -68,7 +73,14 @@ public class UnityPlayerActivity extends Activity {
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
         mUnityPlayer.pause();
-        container.setVisibility(View.GONE);
+
+        getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
+        //container.setVisibility(View.GONE);
+    }
+
+    public void switchFragmentToUnity(){
+        mUnityPlayer.resume();
+        getFragmentManager().beginTransaction().hide(androidButtonFragment).show(unityFragment).commit();
     }
 
     public void onWindowFocusChanged(boolean hasFocus)
@@ -81,13 +93,16 @@ public class UnityPlayerActivity extends Activity {
     // can be non-static
     public void callMeNonStatic(String s){
         Log.d("Non-Static", "Non-Static Call from Unity at " + s);
-
+    /*  Easy way
         thisActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 container.setVisibility(View.GONE);
             }
-        });
+        });*/
+
+    //  Harder way (possibly more powerful)
+        getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
         mUnityPlayer.pause();
     }
     // and static;
