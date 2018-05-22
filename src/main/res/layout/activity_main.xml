@@ -23,7 +23,6 @@
             android:layout_alignParentTop="true"
             android:fontFamily="sans-serif"
             android:paddingLeft="2dp"
-            android:paddingTop="2dp"
             android:text="Android"
             android:textAppearance="@android:style/TextAppearance.Holo.Inverse"
             android:textSize="50sp" />

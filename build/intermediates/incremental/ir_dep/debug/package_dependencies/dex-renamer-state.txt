@@ -1,4 +1,4 @@
-#Mon May 21 18:18:46 CEST 2018
-base.0=G\:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\transforms\\dexMerger\\debug\\10
+#Tue May 22 04:40:40 CEST 2018
+base.0=G\:\\UnityStoff\\Newest Folder\\Unity Test\\build\\intermediates\\transforms\\dexMerger\\debug\\48
 path.0=classes.dex
 renamed.0=classes.dex

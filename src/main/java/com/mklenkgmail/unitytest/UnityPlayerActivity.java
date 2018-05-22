@@ -21,9 +21,10 @@ import com.unity3d.player.UnityPlayer;
 
 public class UnityPlayerActivity extends Activity {
 
-    private static UnityPlayer mUnityPlayer;
-    private static FrameLayout container;
-    private static Activity thisActivity;
+    private UnityPlayer mUnityPlayer;
+    private FrameLayout container;
+    private Activity thisActivity;
+    private UnityFragment unityFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +35,25 @@ public class UnityPlayerActivity extends Activity {
         //to grant access to UI thread in static sub-context
         thisActivity = this;
 
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(container.getId(), new UnityFragment())
-                    .commit();
-        }
 
         mUnityPlayer = new UnityPlayer(this);
         int glesMode = mUnityPlayer.getSettings().getInt("gles_mode", 1);
         mUnityPlayer.init(glesMode, false);
 
+        if (savedInstanceState == null) {
+            unityFragment = UnityFragment.newInstance(mUnityPlayer);
+            getFragmentManager().beginTransaction()
+                    .add(container.getId(), unityFragment)
+                    .commit();
+        }
+
+
         Button buttonUnity = (Button) findViewById(R.id.buttonUnity);
         buttonUnity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: when switching between Unity and Android view too quickly the mUnityPlayer
-                // takes to long to resolve the pause() and resume() methods, making it possible to
+                // TODO: when switching between Unity and Android view too quickly the UnityPlayer
+                // takes too long to resolve the pause() and resume() methods, making it possible to
                 // get stuck in paused Unity screen;
                 mUnityPlayer.resume();
                 container.setVisibility(View.VISIBLE);
@@ -58,7 +62,7 @@ public class UnityPlayerActivity extends Activity {
         });
     }
 
-    //TODO: Back button overriden to prevent getting stuck in Unity player
+    //TODO: Back button overridden to prevent getting stuck in Unity player
     @Override
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
@@ -73,13 +77,9 @@ public class UnityPlayerActivity extends Activity {
     }
 
     // Native methods that are being called from C# File in Unity scene;
-    // can be called in non-static
-    public void callMe(){
-        Log.d("Non-Static", "Non-Static Call from Unity");
-    }
-    // and static context;
-    public static void callMe(String s){
-        Log.d("Static", "Static Call from Unity" +  s);
+    // can be non-static
+    public void callMeNonStatic(String s){
+        Log.d("Non-Static", "Non-Static Call from Unity at " + s);
 
         thisActivity.runOnUiThread(new Runnable() {
             @Override
@@ -88,10 +88,13 @@ public class UnityPlayerActivity extends Activity {
             }
         });
         mUnityPlayer.pause();
+    }
+    // and static;
+    public static void callMeStatic(String s){
+        Log.d("Static", "Static Call from Unity at " +  s);
+
 
     }
-
-
     //  Methods from default generated UnityPlayerActivity
 
     // Quit Unity
@@ -138,27 +141,4 @@ public class UnityPlayerActivity extends Activity {
             mUnityPlayer.lowMemory();
         }
     }
-
-    // Implementation of Unity inside a Fragment for easy management; TODO: Implementation can be changed
-    // so that Unity Fragment is replaced by other fragments (although this will possibly throw Unity
-    // out of the memory;
-    public static class UnityFragment extends Fragment {
-        //Empty default constructor
-        public UnityFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_layout, container, false);
-
-            FrameLayout layout = (FrameLayout) view.findViewById( R.id.frameLayout );
-            layout.addView(mUnityPlayer, 0, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-            mUnityPlayer.resume();
-
-            return view;
-        }
-    }
-
 }

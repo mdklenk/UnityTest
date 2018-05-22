@@ -2,8 +2,8 @@
 buildscript {
 	repositories {
 		jcenter()
-        google()
-    }
+		google()
+	}
 
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.1.2'
@@ -22,7 +22,6 @@ apply plugin: 'com.android.application'
 
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
-    //implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 }
 
 android {
