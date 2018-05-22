@@ -90,14 +90,15 @@ The procedure goes:
         Log.d("Static", "Static Call from Unity at " +  s);
     }
   ```
-  5. Furthermore I have overridden the back-button to provide (jankily) animated transitions between the Fragments as demonstration
+  5. Furthermore I have overridden the back-button to allow transitioning between the Fragments as demonstration
   ```
   @Override
     public void onBackPressed(){
         Log.d("Input", "Back button pressed");
         //mUnityPlayer.pause();
         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        // Breaks stuff, use at your own peril!
+        //fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
         if(getFragmentManager().findFragmentByTag("android").isHidden())
         {
             fragmentTransaction.hide(unityFragment).show(androidButtonFragment).commit();
@@ -112,9 +113,33 @@ The procedure goes:
 Explain what these tests test and why
 
 ### UnityFragment
+UnityFragment is a very simple android.app.Fragment implementation, overriding the onCreateView method to find a View where to paste the UnityPlayer's view on in order to return a view containing the UnityPlayer's graphics.
 
 ```
-Give an example
+@Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_layout, container, false);
+
+        FrameLayout layout = (FrameLayout) view.findViewById( R.id.frameLayout );
+        layout.addView(mUnityPlayer, 0, new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+
+        //mUnityPlayer.resume();
+
+        return view;
+    }
+```
+
+UnityPlayer is passed through an initialization method (it is apparently bad practice to use default constructor so it is extra)
+```
+ //initialize once when Fragment is built for the first time in activity
+    public static UnityFragment newInstance(UnityPlayer unityPlayer){
+        UnityFragment unityFragment = new UnityFragment();
+        unityFragment.mUnityPlayer = unityPlayer;
+
+        return unityFragment;
+    }
+
 ```
 
 ### And coding style tests
