@@ -1,4 +1,4 @@
-//.cs Code that is executed within Unity scene:
+//.cs Code that is executed within Unity scene (attached to invisible GameObject with links to the Button and the Text):
 
 using System.Collections;
 using System.Collections.Generic;
