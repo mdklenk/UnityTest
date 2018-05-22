@@ -130,7 +130,7 @@ UnityFragment is a very simple android.app.Fragment implementation, overriding t
     }
 ```
 
-UnityPlayer is passed through an initialization method (it is apparently bad practice to use default constructor so it is extra)
+UnityPlayer is passed through an extra initialization method (don't use default constructor in fragments). This could be improved upon by creating a UnityPlayer singleton class which contains all methods pertaining the Unity part of the project.
 ```
  //initialize once when Fragment is built for the first time in activity
     public static UnityFragment newInstance(UnityPlayer unityPlayer){
@@ -141,45 +141,36 @@ UnityPlayer is passed through an initialization method (it is apparently bad pra
     }
 
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
+### AndroidButtonFragment
+Simple fragment containing once again an initialization method (for the same reason as above) 
 ```
-Give an example
+public static AndroidButtonFragment newInstance(UnityPlayer unityPlayer) {
+        AndroidButtonFragment androidButtonFragment = new AndroidButtonFragment();
+        androidButtonFragment.mUnityPlayer = unityPlayer;
+      //  androidBtnFragment = androidButtonFragment;
+        return androidButtonFragment;
+    }
 ```
 
-## Deployment
+and an overridden onCreateView which inflates and attaches the view to a View object which can be returned to the main UnityPlayerActivity. Furthermore finds the btnUnity (called thus in .xml) and attaches a listener to it which in turn triggers an (anonymous) inner class that calls UnityPlayerActivity in order to hide the Android fragment and show the Unity one.
+```
+        Button buttonUnity = (Button) view.findViewById(R.id.btnUnity);
+        buttonUnity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UnityPlayerActivity activity = (UnityPlayerActivity) getActivity();
+                activity.switchFragmentToUnity();
+            }
+        });
+```
 
-Add additional notes about how to deploy this on a live system
+## Author
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+**<Michael Klenk** - *Initial work* - [mdklenk](https://github.com/mdklenk)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+License for demonstration purposed in a non-commercial setting only.
 
 ## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Thanks to numerous users (too many to list) both on github and stackoverflow whose postings made it somewhat understandable to go about implementing this.
