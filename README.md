@@ -166,7 +166,7 @@ and an overridden onCreateView which inflates and attaches the view to a View ob
 
 ## Author
 
-**<Michael Klenk** - *Initial work* - [mdklenk](https://github.com/mdklenk)
+**Michael Klenk** - [mdklenk](https://github.com/mdklenk)
 
 ## License
 
