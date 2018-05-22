@@ -52,7 +52,7 @@ The procedure goes:
   ```
   3. Initialize fragments and add to UnityPlayerActivity's own FragmentManager when the UnityPlayerActivity is newly created
   ```
-  if (savedInstanceState == null) {
+  if (savedInstanceState == null || getFragmentManager().findFragmentByTag("unity") == null || (getFragmentManager().findFragmentByTag("android") == null)) {
             unityFragment = UnityFragment.newInstance(mUnityPlayer);
             androidButtonFragment = AndroidButtonFragment.newInstance(mUnityPlayer);
             //mUnityPlayer.pause();
@@ -65,6 +65,7 @@ The procedure goes:
   4. Offer methods that can be called by Fragments and Unity itself to switch between (by hiding the other) fragments. 
   ```
   public void switchFragmentToUnity(){
+    //for good measure, not necessary
     mUnityPlayer.resume();
     getFragmentManager().beginTransaction().hide(androidButtonFragment).show(unityFragment).commit();
   }
@@ -72,7 +73,7 @@ The procedure goes:
   ```
    public void callMeNonStatic(String s){
         Log.d("Non-Static", "Non-Static Call from Unity at " + s);
-    /*  Easy way
+    /* Easy way
         thisActivity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -80,19 +81,37 @@ The procedure goes:
             }
         });*/
 
-    //  Harder way (possibly more powerful)
+    // Harder way (possibly more powerful)
         getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
         //mUnityPlayer.pause();
     }
     // and static;
     public static void callMeStatic(String s){
         Log.d("Static", "Static Call from Unity at " +  s);
-
-
     }
   ```
-
+  5. Furthermore I have overridden the back-button to provide (jankily) animated transitions between the Fragments as demonstration
+  ```
+  @Override
+    public void onBackPressed(){
+        Log.d("Input", "Back button pressed");
+        //mUnityPlayer.pause();
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        if(getFragmentManager().findFragmentByTag("android").isHidden())
+        {
+            fragmentTransaction.hide(unityFragment).show(androidButtonFragment).commit();
+        } else
+        {
+            fragmentTransaction.hide(androidButtonFragment).show(unityFragment).commit();
+        }
+        //container.setVisibility(View.GONE);
+    }
+  ```
+  6. Lastly UnityPlayerActivity contains overriden lifeCycle Methods in order to properly manage the UnityPlayer during different points in the apps' lifecycle, for instance when switching app.
 Explain what these tests test and why
+
+### UnityFragment
 
 ```
 Give an example
