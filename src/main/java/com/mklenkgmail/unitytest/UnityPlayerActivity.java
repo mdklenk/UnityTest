@@ -35,11 +35,12 @@ public class UnityPlayerActivity extends Activity {
         //to grant access to UI thread in static sub-context
         thisActivity = this;
 
-
+        //Initialize UnityPlayer
         mUnityPlayer = new UnityPlayer(this);
         int glesMode = mUnityPlayer.getSettings().getInt("gles_mode", 1);
         mUnityPlayer.init(glesMode, false);
 
+        //On cold boot only
         if (savedInstanceState == null) {
             unityFragment = UnityFragment.newInstance(mUnityPlayer);
             getFragmentManager().beginTransaction()

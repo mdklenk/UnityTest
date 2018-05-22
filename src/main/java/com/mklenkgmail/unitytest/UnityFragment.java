@@ -16,8 +16,6 @@ import com.unity3d.player.UnityPlayer;
 public class UnityFragment extends Fragment {
     //own Pointer to mUnityPlayer in main activity
     private UnityPlayer mUnityPlayer;
-    //superfluous
-    //private static UnityFragment thisFragment;
 
     //empty default constructor for fragment best practices
     public UnityFragment() {
@@ -27,8 +25,6 @@ public class UnityFragment extends Fragment {
     public static UnityFragment newInstance(UnityPlayer unityPlayer){
         UnityFragment unityFragment = new UnityFragment();
         unityFragment.mUnityPlayer = unityPlayer;
-        //superfluous
-        //thisFragment = unityFragment;
 
         return unityFragment;
     }
