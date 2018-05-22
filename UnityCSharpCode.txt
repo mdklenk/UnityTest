@@ -1,4 +1,4 @@
-.cs Code that is executed within Unity scene:
+//.cs Code that is executed within Unity scene:
 
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +9,7 @@ public class ButtonListener: MonoBehaviour {
     public Button m_YourButton;
     public Text m_MyText;
     public double counter;
-
-  // Use this for initialization
+	// Use this for initialization
 	void Start () {
         Button btn = m_YourButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
@@ -19,17 +18,19 @@ public class ButtonListener: MonoBehaviour {
     void TaskOnClick()
     {
         Debug.Log("Button clicked!");
+        //m_MyText.text = "Click!";
 
         var androidJC = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
         var javaObject = androidJC.GetStatic<AndroidJavaObject>("currentActivity");
-        
-        //Will pause Unity from Android activity
-        javaObject.CallStatic("callMe", "Call to Android");
+
+        //var javaClass = new AndroidJavaClass("com.mklenkgmail.unitytest.UnityPlayerActivity");
+
+
+        javaObject.CallStatic("callMeStatic", "Call to Android at " + counter.ToString());
+        javaObject.Call("callMeNonStatic", "Call to Android at " + counter.ToString());
     }
-    
     // Update is called once per frame
     void Update () {
-        //Counter to show that Unity in the back runs, is paused and runs again
         counter++;
         m_MyText.text = counter.ToString();
 	}
