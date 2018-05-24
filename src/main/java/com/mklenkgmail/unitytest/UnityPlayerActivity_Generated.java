@@ -1,3 +1,7 @@
+/*
+Standard automatically generated implementation by Unity (this is what you get when you export the project in Unity). Included for reference purposes.
+*/
+/*
 package com.mklenkgmail.unitytest;
 
 import com.unity3d.player.*;
@@ -113,5 +117,7 @@ public class UnityPlayerActivity_Generated extends Activity
     @Override public boolean onKeyUp(int keyCode, KeyEvent event)     { return mUnityPlayer.injectEvent(event); }
     @Override public boolean onKeyDown(int keyCode, KeyEvent event)   { return mUnityPlayer.injectEvent(event); }
     @Override public boolean onTouchEvent(MotionEvent event)          { return mUnityPlayer.injectEvent(event); }
-    /*API12*/ public boolean onGenericMotionEvent(MotionEvent event)  { return mUnityPlayer.injectEvent(event); }
+    //API12
+    public boolean onGenericMotionEvent(MotionEvent event)  { return mUnityPlayer.injectEvent(event); }
 }
+*/
