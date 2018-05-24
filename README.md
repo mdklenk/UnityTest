@@ -44,7 +44,7 @@ Now for a detailed play-by-play of what is going on when the application is run.
 UnityPlayerActivity is a straightforward android.app.Activity. This class manages the Fragments by instantiating, running and switching them when so instructed. It also is the class that is being called by the C# script (see file in Repository for details) and the class that UnityPlayer resides in (see TODO above, this could be extracted to its own class for better organization).
 
 Member fields:
-´´´
+    ```
     // the Object that is the interface between Unity and Android
     private UnityPlayer mUnityPlayer;
     // not needed in FragmentManager (Ultimate) implementation
@@ -52,7 +52,7 @@ Member fields:
     //the two fragments
     private UnityFragment unityFragment;
     private AndroidButtonFragment androidButtonFragment;
-´´´
+    ```
 
 
 The procedure goes: 
