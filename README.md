@@ -16,6 +16,23 @@ I have successfully compiled this on Android Studio by IntelliJ and JDK 1.8, not
 
 First download and unpack repository (as .zip or clone it). In Android Studio (Eclipse et al. should be equivalent) go to "File -> New -> Import Project" and point it towards the folder containing the unpacked repository. This will create a new project that is ready to compile.
 
+### Adding your own Unity Project
+Simply export the Unity Project for Android. Import the project into Android Studio ("File-> New -> Import Project"), copy the .java  and the /res/layout files from UnityTest repository into the newly exported project (overwriting the existing UnityPlayerActivity). Then compile and run. To switch back to Android you must call the following method from Unity:
+```
+  public void callMeNonStatic(String s){
+        Log.d("Non-Static", "Non-Static Call from Unity at " + s);
+        getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
+    }
+```
+This can be done like so, for example:
+```
+    var androidJC = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+    var javaObject = androidJC.GetStatic<AndroidJavaObject>("currentActivity");
+    javaObject.CallStatic("callMeStatic", "Call to Android at " + lol);
+    javaObject.Call("callMeNonStatic", "Call to Android at " + lol);
+
+```
+
 ### Running
 
 The rest should be straightforward compilation and deployment to run it and see how fast it switches between Unity and Android (once Unity is started for the first time).
