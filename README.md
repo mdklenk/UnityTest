@@ -22,15 +22,14 @@ Simply export the Unity Project for Android. Import the project into Android Stu
   public void callMeNonStatic(String s){
         Log.d("Non-Static", "Non-Static Call from Unity at " + s);
         getFragmentManager().beginTransaction().hide(unityFragment).show(androidButtonFragment).commit();
-    }
+  }
 ```
-This can be done like so, for example:
+This can be done in Unity like so, for example:
 ```
     var androidJC = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
     var javaObject = androidJC.GetStatic<AndroidJavaObject>("currentActivity");
-    javaObject.CallStatic("callMeStatic", "Call to Android at " + lol);
-    javaObject.Call("callMeNonStatic", "Call to Android at " + lol);
-
+    javaObject.CallStatic("callMeStatic", "Call to Android");
+    javaObject.Call("callMeNonStatic", "Call to Android");
 ```
 
 ### Running
