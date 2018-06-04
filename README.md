@@ -186,7 +186,7 @@ and an overridden onCreateView which inflates and attaches the view to a View ob
 
 ## License
 
-License for demonstration purposed in a non-commercial setting only.
+License for demonstration purposes in a non-commercial setting only.
 
 ## Acknowledgments
 Thanks to numerous users (too many to list) both on github and stackoverflow whose postings made it somewhat understandable to go about implementing this.
